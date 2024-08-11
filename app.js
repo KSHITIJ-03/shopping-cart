@@ -6,7 +6,7 @@ const app = express()
 
 const customerRouter = require('./routes/customerRouter')
 const productRouter = require('./routes/productRoutes')
-const cartRouter = require('./routes/cartRouter')
+const shoppingRouter = require('./routes/shoppingRouter')
 const errorController = require('./controllers/errorController')
 const appError = require("./utils/appError")
 
@@ -20,7 +20,7 @@ app.use(morgan("dev"))
 
 app.use('/api/v1/customer', customerRouter)
 app.use('/api/v1/products', productRouter)
-app.use('/api/v1/shopping', cartRouter)
+app.use('/api/v1/shopping', shoppingRouter)
 
 app.get('/', (req, res) => {
     res.json({

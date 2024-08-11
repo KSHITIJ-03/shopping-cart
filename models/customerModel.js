@@ -48,12 +48,17 @@ const customerSchema = new mongoose.Schema({
         }
     ],
     wishlist:[
-        { 
+        {
             type: mongoose.Schema.Types.ObjectId, ref: 'Product'
         }
     ],
     orders: [ 
-        { type: mongoose.Schema.Types.ObjectId, ref: 'order'}
+        { type: mongoose.Schema.Types.ObjectId, ref: 'Order'}
+    ],
+    address : [
+        {
+            type : mongoose.Schema.Types.ObjectId, ref : 'Address'
+        }
     ]
 },
 {

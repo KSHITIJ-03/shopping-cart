@@ -111,9 +111,8 @@ exports.protect = async (req, res, next) => {
 
 exports.order = async (req, res, next) => {
     try {
-        console.log(this.order);
-        console.log(req.user);
-        res.status(200).json({message : 'all good'})
+        const customer = await Customer.findById(req.user._id).populate('orders')
+        res.status(200).json({message : 'your orders', customer})
     } catch(err) {
         next(err)
     }

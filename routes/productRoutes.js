@@ -1,11 +1,11 @@
 const {loadProducts, filterCategory, getProduct, getProducts} = require('./../controllers/productController')
 const customerController = require('./../controllers/customerController')
-const cartRouter = require('./cartRouter')
+const shoppingRouter = require('./shoppingRouter')
 
 const express = require('express')
 const router = express.Router()
 
-router.use('/:id/cart', cartRouter)
+router.use('/:id/cart', shoppingRouter)
 
 router.route('/').get(getProducts)                  
 

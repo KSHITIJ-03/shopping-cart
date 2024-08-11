@@ -6,7 +6,7 @@ const orderSchema = new mongoose.Schema({
         required : [true]
     },
     customerId : {
-        type : String,
+        type : mongoose.Schema.Types.ObjectId, ref : 'Customer',
         required : true
     },
     amount : {
@@ -18,11 +18,22 @@ const orderSchema = new mongoose.Schema({
     },
     txnId: String,
     items: [
-        {   
-            product: {type: mongoose.Schema.Types.ObjectId, ref: 'product', required: true} ,
-            unit: { type: Number, require: true} 
+        {
+          product: { type: mongoose.Schema.Types.ObjectId, ref: 'Product'},
+          unit: { type: Number, require: true, default : 0},
+          price : {
+            type : Number,
+            default : 0
+          }
         }
-    ]
+    ],
+    address : {
+        type : mongoose.Schema.Types.ObjectId, ref : 'Address', required : true
+    }
+},
+{
+    toJSON : {virtuals : true},
+    toObject : {virtuals : true}
 })
 
 module.exports = mongoose.model('Order', orderSchema)
